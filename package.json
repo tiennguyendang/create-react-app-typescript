@@ -61,5 +61,10 @@
     "stylelint": "^14.12.1",
     "stylelint-no-unsupported-browser-features": "^5.0.4",
     "stylelint-order": "^5.0.0"
+  },
+  "engines": {
+    "npm": "please use yarn",
+    "yarn": ">= 1.19.1",
+    "node": ">=14.0.0"
   }
 }
