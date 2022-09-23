@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Guideline
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Install recommend extensions
 
-## Available Scripts
+1. Linting
 
-In the project directory, you can run:
+- [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-### `yarn start`
+2. Formatting
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to fix errors
 
-### `yarn test`
+### Linting error
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If that error cannot be fixed automatically with eslint package, please check ESLint [rules](https://eslint.org/docs/rules/) to fix this manually.
 
-### `yarn build`
+### Commit message error
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If you have output similar with below
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+⧗   input: example
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+```
 
-### `yarn eject`
+This error causes by [CommitLint](https://github.com/conventional-changelog/commitlint/). See below rules to fix this.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Commit message structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+type(scope?): subject
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Scope value
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- ci: Changes to our CI configuration files and scripts (example scopes: Gitlab CI, Circle, BrowserStack, SauceLabs)
+- chore: add something without touching production code (Eg: update npm dependencies)
+- docs: Documentation only changes
+- feat: A new feature
+- fix: A bug fix
+- perf: A code change that improves performance
+- refactor: A code change that neither fixes a bug nor adds a feature
+- revert: Reverts a previous commit
+- style: Changes that do not affect the meaning of the code (Eg: adding white-space, formatting, missing semi-colons, etc)
+- test: Adding missing tests or correcting existing tests
 
-## Learn More
+### Example
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git commit -m "Update login screen" # Bad commit message ⚠️
+git commit -m "feat: Update login screen" # Violated commit message ⚠️ (subject must not be sentence-case, start-case, pascal-case, upper-case)
+git commit -m "feat: update login screen" # Good commit message ✅
+```
